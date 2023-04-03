@@ -55,6 +55,6 @@ Route::resource('article', ArticleController::class)->except('index', 'show');
 // Route::resource('login', LoginController::class);
 Route::get('login-form', [LoginController::class, 'index'])->name('login.index');
 Route::post('login-form', [LoginController::class, 'save'])->name('login.save');
-// Route::post('login-show', [LoginController::class, 'upload_file'])->name('login.upload');
-// Route::get('login-show', [LoginController::class, 'upload_form'])->name('login.upload.show');
-
+Route::post('login.upload', [LoginController::class, 'upload_file'])->name('login.upload');
+Route::get('login-show', [LoginController::class, 'upload_form'])->name('login.upload.show');
+Route::get('articles', [HomeController::class, 'articles']);
