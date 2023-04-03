@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title', 'Contacts page')
 @section('content')
 <div>
     <ul>

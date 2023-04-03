@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 Route::get('welcome', function () {
     return view('welcome');
@@ -23,8 +26,35 @@ Route::get('welcome', function () {
 
 Route::get('about', function () {
     return view('about');
-});
+})->name('about');
 
 Route::get('contacts', function () {
     return view('contacts');
 });
+
+Route::get('users/{user_name}/{id?}', function ($user_name, $id = 0) {
+    return $user_name . ' - id:' . $id;
+})->name('users');
+
+Route::prefix('admin')->group(function () {
+
+    Route::get('/', function () {
+        return 'admin - index - page';
+    });
+    Route::get('/welcome/{id}', function ($id) {
+        return 'admin - welcome - page with id :' . $id;
+    });
+});
+
+Route::get('home/{id}', [HomeController::class, 'home'])->name('home');
+
+// Route::resource('article', ArticleController::class);
+// Route::resource('article', ArticleController::class)->only('index', 'show');
+Route::resource('article', ArticleController::class)->except('index', 'show');
+
+// Route::resource('login', LoginController::class);
+Route::get('login-form', [LoginController::class, 'index'])->name('login.index');
+Route::post('login-form', [LoginController::class, 'save'])->name('login.save');
+// Route::post('login-show', [LoginController::class, 'upload_file'])->name('login.upload');
+// Route::get('login-show', [LoginController::class, 'upload_form'])->name('login.upload.show');
+

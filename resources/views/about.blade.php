@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title', 'About page')
 @section('content')
 <div>
     <h1>About page</h1>

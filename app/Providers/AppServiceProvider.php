@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,5 +25,15 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Blade::component('components.button', 'btn');
+
+        Blade::directive('bold', function ($text) {
+            return "<b>" . $text . "</b>";
+        });
+
+        Blade::if('isint', function ($value = null) {
+            return is_int($value);
+        });
+
     }
 }
