@@ -13,7 +13,18 @@ class HomeController extends Controller
     }
 
     public function articles(){
-        $result = DB::table('articles')->get();
-        dd($result);
+        $articles = DB::table('articles')->get();
+        $sql = DB::table('articles')->toSql();
+        $articles = DB::table('articles')->where("id", '2')->get();
+        $articles = DB::table('articles')->where('id', '>', '3')->get();
+        $article = DB::table('articles')->find(3);
+        $count = DB::table('articles')->count();
+        //dd($articles);
+        // dd($sql);
+        //return view('articles', ['articles'=>$articles]);
+        // dd(compact('articles'));
+        //return view('articles', compact('articles'));
+        return view('articles', ['articles' => $articles, 'article' => $article, 'count' =>     $count]);
+        // dd($articles);
     }
 }

@@ -129,6 +129,8 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute must be a valid URL.',
     'uuid' => 'The :attribute must be a valid UUID.',
+    'mypass' => 'The :attribute must be more than 2 letters.',
+    'my_validator' => 'The :attribute must be more joooo jooo.',
 
     /*
     |--------------------------------------------------------------------------
@@ -159,5 +161,8 @@ return [
     */
 
     'attributes' => [],
+    'test' => [
+        'hello'=>'The :attribute must be more than 2 letters.'
+    ],
 
 ];

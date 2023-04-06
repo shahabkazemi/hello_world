@@ -120,7 +120,8 @@ return [
     'uploaded' => 'آپلود گزینه :attribute شکست خورد',
     'url' => 'فرمت :attribute اشتباه است',
     'uuid' => 'گزینه :attribute باید یک UUID صحیح باشد',
-
+    'mypass' => 'گزینه :attribute می بایست بیشتر از 2 حرف باشد.',
+    'my_validator' => 'گزینه :attribute باید جوجو باشه.',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -189,5 +190,8 @@ return [
         'pic' => 'تصویر',
         'link' => 'لینک',
         'select_number' => 'انتخاب عدد'
+    ],
+    'test' => [
+        'hello'=>'گزینه :attribute می بایست زیادتر از 2 حرف باشد.'
     ],
 ];

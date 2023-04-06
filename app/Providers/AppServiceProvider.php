@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Validator as BaseValidator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,5 +37,8 @@ class AppServiceProvider extends ServiceProvider
             return is_int($value);
         });
 
+        Validator::extend("my_validator", function($field, $values, $params, BaseValidator $failed ){
+            return is_array($values) && count($values) > 2;
+        });
     }
 }

@@ -25,8 +25,17 @@ class LoginRequest extends FormRequest
     {
         return [
             "email" => "required|email",
-            "password" => "required",
-            "select_number" => "array"
+            "password" => ["required" , function ($field, $value, $failed){
+                if (strlen($value) < 2 )
+                    $failed(__('validation.test.hello'));
+            }],
+            "select_number" => [ "array", "my_validator" ]
         ];
     }
+    // public function messages()
+    // {
+    //     return [
+    //         'my_validator' => 'Each word in :attribute must begin with a capital letter'
+    //     ];
+    // }
 }

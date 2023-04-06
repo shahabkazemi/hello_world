@@ -130,8 +130,8 @@
                 </label>
             </div>
             <div class="form-group">
-                <lable for="select_number">id select</lable>
-                <select name="select_number" id="select_number" class="form-control">
+                <label for="select_number">id select</label>
+                <select name="select_number" id="select_number" class="form-control" >
                     <option value="2">item - 2</option>
                     <option value="3">item - 3</option>
                     <option value="4">item - 4</option>
