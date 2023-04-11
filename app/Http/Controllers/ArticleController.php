@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
@@ -13,7 +14,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        return view('articles');
     }
 
     /**
@@ -23,7 +24,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        dd('create');
     }
 
     /**
@@ -34,7 +35,15 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $article = $request->all();
+        unset($article['_token']);
+        $id = DB::table('articles')->insertGetId($article);
+
+        $articles = DB::table('articles')->get();
+        $count = DB::table('articles')->count();
+
+        $article = DB::table('articles')->find($id);
+        return view('articles', ['articles' => $articles, 'article' => $article, 'count' => $count]);
     }
 
     /**
@@ -45,6 +54,7 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
+        dd('show');
         //
     }
 
@@ -56,7 +66,10 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $article = DB::table('articles')->find($id);
+        return view('articles_update', ['article' => $article, 'id'=>$id]);
+
     }
 
     /**
@@ -68,7 +81,13 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $article = $request->all();
+        DB::table('articles')->where('id', $id)->update(['Title'=>$article['Title'], 'Description' => $article['Description']]);
+
+        $articles = DB::table('articles')->get();
+        $count = DB::table('articles')->count();
+        $article = DB::table('articles')->find($id);
+        return view('articles', ['articles' => $articles, 'article'=>$article, 'count' => $count, 'goto'=>$id]);
     }
 
     /**
@@ -79,6 +98,11 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('articles')->delete($id);
+
+        $articles = DB::table('articles')->get();
+        $count = DB::table('articles')->count();
+        $article = DB::table('articles')->find($id - 1 );
+        return view('articles', ['articles' => $articles, 'article'=>$article, 'count' => $count, 'goto'=>$id - 1]);
     }
 }
