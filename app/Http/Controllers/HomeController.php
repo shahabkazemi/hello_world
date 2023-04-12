@@ -18,7 +18,7 @@ class HomeController extends Controller
         $sql = DB::table('articles')->toSql();
         $articles = DB::table('articles')->where("id", '2')->get();
         $articles = DB::table('articles')->where('id', '>', '3')->get();
-        $article = DB::table('articles')->find(3);
+        $article = DB::table('articles')->find(1);
         $count = DB::table('articles')->count();
         //dd($articles);
         // dd($sql);
@@ -57,7 +57,7 @@ class HomeController extends Controller
                     print_r($pathre . sprintf("%03d", $value['id']) . ' - ' . $title .'.'.$ext );
                     // File::copy($find_file[0], $pathre . sprintf("%03d", $value['id']) . ' - ' . $title .'.'.$ext);
                 }
-                
+
                 echo '<br>';
                 echo $find_file[0] . '<br>';
                 //File::copy($find_file[0], $pathre . sprintf("%03d", $value['id']));

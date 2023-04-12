@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,21 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('articles');
+        $articles = Article::all();
+
+        $article = Article::first();
+        $count = Article::count();
+        $articles = Article::withoutGlobalScope('status')->where('id', '>', 0)->get();
+
+        //local scope
+        // $articles = Article::status()->get(); //dar in ghesmat bayesti global scope ghire faal garddad
+
+        $articles = Article::withoutGlobalScope('status')->status()->get();
+
+
+        $article = Article::create(['Title'=>'HELLO', 'Description'=>'SALAM']);
+
+        return view('articles', ['articles' => $articles, 'article' => $article, 'count' => $count]);
     }
 
     /**
