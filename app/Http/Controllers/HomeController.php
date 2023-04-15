@@ -2,14 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use File;
+use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use File;
 
 class HomeController extends Controller
 {
-    public function home(Request $reguest, $id){
-        dd($reguest->all(), $id);
+    public function home(){
+
+        $user = User::find(1);
+        dd($user->profile);
+
+        // $profile = Profile::find(1);
+        // dd($profile->user);
+
+        // dd($reguest->all(), $id);
         return view('home');
     }
 

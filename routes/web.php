@@ -60,6 +60,7 @@ Route::post('login.upload', [LoginController::class, 'upload_file'])->name('logi
 Route::get('login-show', [LoginController::class, 'upload_form'])->name('login.upload.show');
 Route::get('articles', [HomeController::class, 'articles']);
 Route::get('rename', [HomeController::class, 'rename_by_youtube_list']);
+Route::get('home', [HomeController::class, 'home']);
 Route::get('articles_eq_show', [ArticleEqController::class, 'show']);
 Route::get('articles_eq_insert', [ArticleEqController::class, 'insert']);
 Route::get('articles_eq_udpate', [ArticleEqController::class, 'update']);
