@@ -24,7 +24,5 @@ class GiftsTableSeeder extends Seeder
         // {
         //     Gift::create(['Title'=>$fFaker->fullName(), 'Description' => $fFaker->paragraph()]);
         // }
-
-        // \App\Models\Gift::factory(15);
     }
 }

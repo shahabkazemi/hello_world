@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use File;
+use App\Models\Post;
 use App\Models\User;
 use App\Models\Profile;
 use Illuminate\Http\Request;
@@ -85,5 +86,13 @@ class HomeController extends Controller
         // }
 
         //dd($find_file);
+    }
+
+    public function post_comments($id){
+        $post = Post::find($id);
+        dd($post->comments);
+
+        $post = Post::find($id)->commnets->where('status', 1);
+        dd($post->comments);
     }
 }

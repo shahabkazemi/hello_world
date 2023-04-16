@@ -65,4 +65,5 @@ Route::get('articles_eq_show', [ArticleEqController::class, 'show']);
 Route::get('articles_eq_insert', [ArticleEqController::class, 'insert']);
 Route::get('articles_eq_udpate', [ArticleEqController::class, 'update']);
 Route::get('articles_eq_delete', [ArticleEqController::class, 'delete']);
+Route::get('post_comments/{id}', [HomeController::class, 'post_comments']);
 
