@@ -17,8 +17,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->has(Profile::factory()->count(1))->has(Role::factory()->count(2))->create();
+        \App\Models\User::factory(10)->has(Profile::factory()->count(1))->create();
         \App\Models\Post::factory(10)->has(Comment::factory()->count(4))->create();
+        \App\Models\Role::factory(4)->create();
         // $this->call([GiftsTableSeeder::class]);
         \App\Models\Gift::factory(15)->create();
     }

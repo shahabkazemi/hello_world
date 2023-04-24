@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RoleFactory extends Factory
 {
-    private static $fake_roles = ['مدیر', 'نویسنده', 'توسعه دهنده', 'ورود اطلاعات', 'ویرایشگر'];
+    private $fake_roles = ['مدیر', 'نویسنده', 'توسعه دهنده', 'ورود اطلاعات', 'ویرایشگر'];
     /**
      * Define the model's default state.
      *
@@ -15,10 +15,9 @@ class RoleFactory extends Factory
      */
     public function definition()
     {
-
         $f = new PFaker();
         return [
-            'Title' => $this->fake_roles[range(0, 4)]
+            'Title' => $this->fake_roles[rand(1, 4)]
         ];
     }
 }
