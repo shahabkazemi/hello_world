@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use File;
 use App\Models\Post;
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Profile;
 use Illuminate\Http\Request;
@@ -94,5 +95,45 @@ class HomeController extends Controller
 
         $post = Post::find($id)->commnets->where('status', 1);
         dd($post->comments);
+    }
+
+    public function user_roles($user_id){
+        $user = User::find($user_id);
+        dd($user->roles->first()->pivot);
+        // dd($user->roles);
+    }
+
+    public function role_users($role_id){
+        $role = Role::find($role_id);
+        $users = $role->users;
+        dd($users);
+    }
+
+    public function attach_role_user($role_id, $user_id){
+        //روش اول الصاق نقش به کاربر
+        $role = Role::find($role_id);
+        $user = User::find($user_id);
+        // $result = $user->roles()->save($role);
+
+        //روش دوم
+        // $result = $user->roles()->attach($role);
+        // dd($result);
+
+        //detach
+        // $result = $user->roles()->detach($role);
+        // dd($result);
+
+        //sync کل نقش های قبلی رو پاک می کنه و جدید ها رو جایگزین می کنه
+        $roles = Role::find([1,2,3]);
+        // $result = $user->roles()->sync($roles);
+        //اگه بخواهیم سینک نقش های قبل رو پاک نکنه و فقط اضافه کنه
+        //پارامتر دوم رو false میدید
+        $result = $user->roles()->sync($roles, false);
+        dd($result);
+    }
+
+    public function user_car_color($user_id){
+        $user = User::find($user_id);
+        dd($user->carinfo);
     }
 }

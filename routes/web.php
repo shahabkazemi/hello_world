@@ -66,4 +66,11 @@ Route::get('articles_eq_insert', [ArticleEqController::class, 'insert']);
 Route::get('articles_eq_udpate', [ArticleEqController::class, 'update']);
 Route::get('articles_eq_delete', [ArticleEqController::class, 'delete']);
 Route::get('post_comments/{id}', [HomeController::class, 'post_comments']);
+Route::get('user_roles/{user_id}', [HomeController::class, 'user_roles']);
+Route::get('role_users/{role_id}', [HomeController::class, 'role_users']);
+Route::get('attach_role_user/{role_id}/{user_id}', [HomeController::class, 'attach_role_user']);
+Route::get('user_car_color/{user_id}', [HomeController::class, 'user_car_color']);
+
+
+
 

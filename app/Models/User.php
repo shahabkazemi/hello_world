@@ -44,9 +44,20 @@ class User extends Authenticatable
     ];
 
     public function profile(){
-        
+
         //return $this->hasOne(Profile::class);
         return $this->hasOne(Profile::class, 'user_id', 'id');
         //     $this->hasOne(Profile::class, 'foreign_key', 'local_key');
+    }
+
+    public function roles(){
+        return $this->belongsToMany(Role::class)->withTimestamps()->withPivot('description');
+        // return $this->belongsToMany(Role::class)->withTimestamps()->withPivot('description')->wherePivot('is_status', '1');
+
+        // return $this->belongsToMany(User::class, 'role_user', 'user_id', 'role_id', 'id', 'id');
+    }
+
+    public function carinfo(){
+        return $this->hasOneThrough(CarInfo::class, Car::class);
     }
 }
